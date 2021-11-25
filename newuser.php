@@ -16,6 +16,12 @@ if(ISSET($_POST['submit'])){
     $password = trim(filter_var(htmlspecialchars($_POST['password']), FILTER_SANITIZE_STRING));
     $email = trim(filter_var(htmlspecialchars($_POST['email']), FILTER_SANITIZE_STRING));
     $hashpassword= password_hash($password, PASSWORD_DEFAULT);
+
+    $getId="SELECT id From users WHERE users.firstname='$fname' AND users.lastname='$lastname'";
+    $qId = $conn->query($getId)
+    $id = $qId->fetchAll(PDO::FETCH_ASSOC);
+    $_SESSION['current_id']=$id;
+
     $qStr = "INSERT INTO users(firstname,lastname,password,email) VALUES ('$fname','$lname','$hashpassword','$email')";
 
     if ($conn->query($qStr)) {
