@@ -24,7 +24,6 @@ if(ISSET($_POST['submit'])){
     }
 }
 
-
 // INSERT INTO users(firstname,lastname,password,email) VALUES ('test','test','9u2irhiwhruy43yugyhufnioui ','test@test.com');
 // password_verify(current, testpas)
 // session_destroy();
