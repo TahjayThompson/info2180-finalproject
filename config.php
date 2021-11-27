@@ -1,7 +1,7 @@
 <?php
     $host = 'localhost';
     $dbname = 'bugme';
-    $username = 'root';
+    $username = 'root_user';
     $password = '';
 
     
