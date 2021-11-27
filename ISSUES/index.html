@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js"> </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <body>
+        <header>
+            <img class = "header-img" src="bug_report-white-18dp.svg">
+            <h1>BugMe Issue Tracker </h1>
+        </header>
+        <aside> 
+            <div class="sideNav">
+                <ul>
+                    <div class="info">  
+                        <img src="homeIcon.svg">
+                        <a href="#">Home</a>
+                    </div>
+                    <div class="info">  
+                        <img src="userIcon.svg">
+                        <a href="#">Add User</a>
+                    </div>
+                    <div class="info">  
+                        <img src="issueIcon.svg">
+                        <a href="#">New Issue</a>
+                    </div>
+                    <div class="info">  
+                        <img src="logIcon.svg">
+                        <a href="#">Logout</a>
+                    </div>
+                </ul>
+        </aside>
+
+        <section class = "add-issue">
+            <h1 class="issue">Issues</h1>
+            <div class="submit">
+                <input type= "submit" id= "createIssue value="Create New Issue">
+            </div>
+        </section>
+        
+        <div id="filter-by"> 
+            <p> 
+                <span><h1>Filter by: </h1></span>
+                <button id="all"> All</button>
+                <button id="open"> OPEN </button>
+                <button id="all-t"> MY TICKETS</button>
+            </p>
+        </div>
+
+        <div id="result"></div>
+
+
+        <!-- <table class="issueTable">
+            <thead>
+                <tr>
+                    <th id="heading1">Title </th>
+                    <th>Type</th>
+                    <th class="status"> Status </th>
+                    <th>Assigned To</th>
+                    <th>Created</th>
+                </tr>
+            </thead>
+            <tbody> 
+                <tr id="row">
+                        <td><b>#100</b> <a href="#" class="link">XSS Vulnerability in Add User Form</a></td>
+                        <td>Bug</td>
+                        <td class="btn"><button id="OPEN">OPEN</button></td>
+                        <td>Tom Brady</td>
+                        <td>2019-11-01</td>
+                    </tr>
+                    <tr id="row">
+                        <td><b>#23</b> <a href="#" class="link">Location Service isn't working</a></td>
+                        <td>Bug</td>
+                        <td class="btn"><button id="OPEN">OPEN</button></td>
+                        <td>Jan Brady</td>
+                        <td>2019-10-15</td>
+                    </tr>
+                    <tr id="row">
+                        <td><b>#16</b> <a href="#" class="link">Setup Logger</a></td>
+                        <td>Proposal</td>
+                        <td class="btn"><button id="CLOSED"> CLOSED </button></td>
+                        <td>Marsha Brady</td>
+                        <td>2019-08-10</td>
+                    </tr>
+                    <tr id="row">
+                        <td><b>#50</b> <a href="#" class="link">Create API Documentation</a></td>
+                        <td>Proposal</td>
+                        <td class="btn"><button id="PROGRESS">IN PROGRESS</button></td>
+                        <td>Mike Brady</td>
+                        <td>2019-10-029</td>
+                    </tr>
+                    <tr id="row">
+                        <td><strong>#50</strong> <a href="#" class="link">Allow results to be sorted</a></td>
+                        <td>Proposal</td>
+                        <td class="btn"><button id="PROGRESS">IN PROGRESS</button></td>
+                        <td>Marcia Brady</td>
+                        <td>2019-10-20</td>
+                    </tr>
+                </tr>
+            </tbody>
+        </table> -->
+    </body>
+</html>
