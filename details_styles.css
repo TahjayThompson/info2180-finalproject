@@ -1,0 +1,101 @@
+main {
+    display: grid;
+    grid-template-columns: 0.25fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 30px;
+}
+
+#sidebar {
+    background-color: lightgrey;
+}
+
+ol {
+    list-style-type: none;
+}
+
+a {
+    color: black;
+    float: left;
+    padding: 10px;
+    margin-left: 15px;
+}
+
+a:hover {
+    color: gray;
+}
+
+h1 {
+    margin-bottom: 0;
+}
+
+h5 {
+    margin: 0;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+#details {
+    display: grid;
+    grid-template-columns: 1fr 0.25fr;
+    grid-template-rows: 1fr;
+    gap: 30px;
+}
+
+ul {
+    list-style-type: "> ";
+}
+
+li p {
+    color: lightgrey;
+}
+
+h5 ~ p {
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+#details aside {
+    padding-right: 10px;
+}
+
+#other {
+    background-color: lightgrey;
+    border: solid 1px;
+    border-color: gray;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    width: 200px;
+}
+
+.closed {
+    background-color: #5A67D8;
+}
+
+.closed:hover {
+    background-color: #b2b6e0;
+}
+
+.closed_disabled {
+    background-color: #b2b6e0;
+    cursor: default;
+}
+
+.progress {
+    background-color: #48BB78;
+}
+
+.progress:hover {
+    background-color: #8cc4a4;
+}
+
+.progress_disabled {
+    background-color: #8cc4a4;
+    cursor: default;
+}
