@@ -1,0 +1,33 @@
+main {
+    padding-left: 30px;
+}
+
+input {
+    margin-top: 5px;
+    border: solid 1px;
+    border-radius: 5px ;
+    border-color: lightgray;
+    width: 200px;
+    height: 25px;
+    padding: 8px;
+}
+
+#email {
+    margin-bottom: 15px;
+}
+
+button {
+    padding: 15px;
+    background-color: #5A67D8;
+    border: solid 1px;
+    width: 218px;
+}
+
+button:hover {
+    background-color: #b2b6e0;
+}
+
+.disabled {
+    background-color: #b2b6e0;
+    cursor: default;
+}
