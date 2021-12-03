@@ -7,6 +7,12 @@
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
+DROP DATABASE IF EXISTS bugme;
+CREATE DATABASE bugme;
+
+USE bugme;
+
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -21,16 +27,12 @@ SET time_zone = "+00:00";
 -- Database: `bugme`
 --
 
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `issues`
 --
-
-DROP DATABASE IF EXISTS bugme;
-CREATE DATABASE bugme;
-USE bugme;
-
 
 CREATE TABLE `issues` (
   `id` int(11) NOT NULL,
@@ -60,12 +62,6 @@ CREATE TABLE `users` (
   `date_joined` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `firstname`, `lastname`, `password`, `email`, `date_joined`) VALUES
-(1, 'test', 'test', '9u2irhiwhruy43yugyhufnioui ', 'test@test.com', '2021-11-25 06:09:07');
 
 --
 -- Indexes for dumped tables
@@ -76,6 +72,12 @@ INSERT INTO `users` (`id`, `firstname`, `lastname`, `password`, `email`, `date_j
 --
 ALTER TABLE `issues`
   ADD PRIMARY KEY (`id`);
+
+-- 
+-- AUTO_INCREMENT for 'index'
+--
+ALTER TABLE `issues`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Indexes for table `users`
@@ -92,6 +94,16 @@ ALTER TABLE `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`firstname`, `lastname`, `password`, `email`, `date_joined`) VALUES
+('test', 'test', '9u2irhiwhruy43yugyhufnioui ', 'test@test.com', '2021-11-25 06:09:07');
+
+
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

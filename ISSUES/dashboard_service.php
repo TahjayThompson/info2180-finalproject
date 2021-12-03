@@ -1,16 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css" />
+
+    <title>Issue</title>
+</head>
+<body>
+    
+<!-- DEBUGGING MODE -->
 <?php
-// session_start();
+ini_set('display_errors', 'On');
+error_reporting(E_ALL | E_STRICT);
+?>
+<!-- END OF DEBUGGING MODE -->
+
+<?php
+session_start();
+// ======= Change this line below actual value of the authenticated userID =======
+$_SESSION['current_id'] =2; 
+
 require_once 'config.php';
 
 
 try {
     $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    echo "Connected to $dbname at $host successfully.";    
+   
 } catch (PDOException $pe) {
     die("Could not connect to the database $dbname :" . $pe->getMessage());
 }
 
 $ajax_query = $_GET['issue_data'];
+
 
 // returns selected issue based on the standardised filter options
 $issues_query;
@@ -24,35 +47,33 @@ switch($ajax_query){
         $issues_query = $conn->query("SELECT * FROM issues WHERE status = 'open';");
         break;
     
-    case $_SESSION['current_id']:
+    default:
     $current_user = $_SESSION['current_id'];
     $issues_query = $conn->query("SELECT * FROM issues WHERE assigned_to = $current_user;");
-        break;
-    default:
-        $issues_query = $conn->query("SELECT * FROM issues WHERE 1 = 0;");// select nothing in the query                        
 }
 
 
 $fetched_issues = $issues_query->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<table>
-    <tr>
-        <th>Title</th>
-        <th>Type</th>
-        <th>Status</th>
-        <th>Assigned To</th>
-        <th>Created</th>
-    </tr>
+<table class="issueTable">
+    <thead>
+        <tr id="heading1">
+            <th>Title</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Assigned To</th>
+            <th>Created</th>
+        </tr>
+</thead>
 
     <?php foreach($fetched_issues as $row): ?>
-        <tr>
-            <td><?=$row['title']?></td>
+        <tr class ="row">
+            <td><b>#<?=$row['id']?></b> <a href="#" class="link"><?=$row['title']?></a></td>
             <td><?=$row['type']?></td>
             <td><?=$row['status']?></td>
             <td><?=get_username($row['assigned_to'])?></td>
             <td><?=$row['created']?></td>
-
         </tr>
     <?php endforeach; ?>
 </table>
@@ -60,6 +81,8 @@ $fetched_issues = $issues_query->fetchAll(PDO::FETCH_ASSOC);
 
 <?php
     function get_username($user_id){
+        include 'config.php';
+        $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
         $name =$conn->query("SELECT firstname,lastname FROM users WHERE id = $user_id;");
         $names_fetched = $name->fetchAll(PDO::FETCH_ASSOC);
         $fname;
@@ -73,3 +96,6 @@ $fetched_issues = $issues_query->fetchAll(PDO::FETCH_ASSOC);
 
 
 ?>
+
+</body>
+</html>

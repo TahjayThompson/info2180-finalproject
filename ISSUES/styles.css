@@ -100,9 +100,14 @@ button{
     width: 4rem;
 }
 
-#all-t:focus{
+.selected{
     width: 6rem;
+    height: 3rem;
+    background: blue;
+    color:white;
 }
+
+#all
 
 .filter  {
     margin-left: 30%;
@@ -133,7 +138,6 @@ button{
 
 /*Table*/
 .issueTable {
-    margin-left:20%;
     border-collapse: collapse;
     text-align:left;
     width: 70%;
@@ -153,6 +157,7 @@ th {
   
 td {
 	border-bottom: 1px solid #ddd;
+    width: 20px;
 }
 .status{
     text-align: center;
@@ -160,7 +165,7 @@ td {
 
 #OPEN {
     background-color: #139e4d;
-    width:25%;
+    width:15%;
     padding: 7px;
     color: #fff;
     margin-left: 170px;
@@ -183,7 +188,8 @@ td {
     color: rgb(58, 56, 56);
 }
 
-
-
-
-
+#result{
+    justify-content: center;
+    display: flex;
+    align-self: center;
+}
