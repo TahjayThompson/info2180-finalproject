@@ -88,7 +88,7 @@ error_reporting(E_ALL | E_STRICT);
 
                         <ul>
                             <li><p id = "created"> Issue created on <?=date("F jS, Y", strtotime(get_date($issue['created'])));?> at <?=date('h:i A', strtotime($issue['created']));?> by <?=get_name($issue['created_by']);?> </p></li>
-                            <li><p id = "updated"> Last updated on <?=date("F jS, Y", strtotime(get_date($issue['updated'])));?> at <?=date('h:i A', strtotime($issue['updated']));?></p></li>
+                            <li><p id = "updated"> Last updated on <span id = "date"> <?=date("F jS, Y", strtotime(get_date($issue['updated'])));?> </span>  at <span id= "time"> <?=date('h:i A', strtotime($issue['updated']));?> </span> </p></li>
                         </ul>
                     </div>
                     

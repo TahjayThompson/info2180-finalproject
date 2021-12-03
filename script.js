@@ -11,14 +11,27 @@ window.addEventListener('load',(event)=>{
         let id = e.target.id;
     
         let update = {closed: id};
-        console.log(update);
+
         $.ajax({
             type: "POST",
             url: "status_service.php",
             data: update,
             dataType: "html"
         }).done(res =>{
-            alert(`${res}`);
+            let dateTime = res.split("+");
+
+            udate = dateTime[0].slice(-23);
+            udate = udate.trim();
+
+            let date = $("#date");
+            let time = $("#time");
+
+            date.empty();
+            date.append(udate);
+
+            time.empty();
+            time.append(dateTime[1]);
+            
         }).fail(()=>{
             alert("failed to update status");
         });
@@ -37,7 +50,20 @@ window.addEventListener('load',(event)=>{
             data: update,
             dataType: "html"
         }).done(res =>{
-            alert(`${res}`);
+            let dateTime = res.split("+");
+
+            udate = dateTime[0].slice(-23);
+            udate = udate.trim();
+
+            let date = $("#date");
+            let time = $("#time");
+
+            date.empty();
+            date.append(udate);
+
+            time.empty();
+            time.append(dateTime[1]);
+
         }).fail(()=>{
             alert("failed to update status");
         });
