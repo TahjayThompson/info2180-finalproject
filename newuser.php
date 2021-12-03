@@ -15,7 +15,7 @@ if(ISSET($_POST['submit'])){
     $lname = trim(filter_var(htmlspecialchars($_POST['lname']), FILTER_SANITIZE_STRING));
     $password = trim(filter_var(htmlspecialchars($_POST['password']), FILTER_SANITIZE_STRING));
     $email = trim(filter_var(htmlspecialchars($_POST['email']), FILTER_SANITIZE_STRING));
-    $hashpassword= password_hash($password, PASSWORD_DEFAULT);
+    $hashpassword= password_hash($password);
 
     $getId="SELECT id From users WHERE users.firstname='$fname' AND users.lastname='$lastname'";
     $qId = $conn->query($getId)
