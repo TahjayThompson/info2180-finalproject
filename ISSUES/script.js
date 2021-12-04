@@ -113,13 +113,12 @@ function set_btn_color(){
   //console.log("i am stat", result.childNodes[15].childNodes[3].childNodes[0]);
   if (status== 'Open'){
     //elem.classList.add('OPEN');
-    elem.id = "OPEN";
+    elem.classList.add("OPEN");
     console.log(elem);
-  } else if (status == "CLOSED"){
-      elem.id = "CLOSED";
+  } else if (status == "closed"){
+    elem.classList.add("CLOSED");
   } else{
-      elem.id = 'PROGRESS';
+    elem.classList.add("progress");
   }
-    
 
 }
