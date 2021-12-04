@@ -163,7 +163,7 @@ td {
     text-align: center;
 }
 
-#OPEN {
+.OPEN {
     background-color: #139e4d;
     width:15%;
     padding: 7px;
@@ -171,7 +171,7 @@ td {
     margin-left: 170px;
 }
 
-#CLOSED {
+.CLOSED {
     background-color: #d96d14;
     width:30%;
     padding: 7px;
@@ -180,7 +180,7 @@ td {
 
 }
 
-#PROGRESS {
+.PROGRESS {
     background-color: #f0e114;
     width:40%;
     padding: 7px;
