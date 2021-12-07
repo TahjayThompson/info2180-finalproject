@@ -1,9 +1,3 @@
-<!-- DEBUGGING MODE -->
-<?php
-ini_set('display_errors', 'On');
-error_reporting(E_ALL | E_STRICT);
-?>
-<!-- END OF DEBUGGING MODE -->
 
 
 <?php
@@ -73,10 +67,10 @@ error_reporting(E_ALL | E_STRICT);
             <aside id = "sidebar">
                 <nav>
                     <ol>
-                        <li><a href = "#"> <i class = "fas fa-home"> Home</i></a></li>
-                        <li><a href = "#"> <i class = "fas fa-user-plus"> Add User</i></a></li>
-                        <li><a href = "#"> <i class = "fas fa-plus-circle"> New Issue</i></a></li>
-                        <li><a href = "login.html"> <i class = "fas fa-power-off"> Logout</i></a></li>
+                        <li><a href = "../main.php"> <i class = "fas fa-home"> Home</i></a></li>
+                        <li><a href = "../new user and create issue/newuser.php"> <i class = "fas fa-user-plus"> Add User</i></a></li>
+                        <li><a href = "../new user and create issue/create_issue_page.php"> <i class = "fas fa-plus-circle"> New Issue</i></a></li>
+                        <li><a href = "../logout.php"> <i class = "fas fa-power-off"> Logout</i></a></li>
                     </ol>
                 </nav>
             </aside>

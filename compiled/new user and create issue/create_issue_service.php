@@ -1,10 +1,3 @@
-<!-- DEBUGGING MODE -->
-<?php
-ini_set('display_errors', 'On');
-error_reporting(E_ALL | E_STRICT);
-?>
-<!-- END OF DEBUGGING MODE -->
-
 
 
 

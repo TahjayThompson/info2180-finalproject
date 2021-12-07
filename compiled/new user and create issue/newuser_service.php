@@ -1,50 +1,62 @@
-<!-- START OF DEBUGGING -->
 
-<?php
-ini_set('display_errors', 'On');
-error_reporting(E_ALL | E_STRICT);
-?>
-<!-- END OF DEBUGGING -->
 
 
 
 
 <?php
+
+    session_start();   
+    if(!isset($_SESSION['admin'])){
+    header("Location: index.html");
+  }
 
   $root = $_SERVER['DOCUMENT_ROOT'];
   include("$root" . "/info2180-finalproject/compiled/config.php");
 
   $fname = filter_var($_POST['fname'],FILTER_SANITIZE_STRING);
   $lname = filter_var($_POST['lname'],FILTER_SANITIZE_STRING);
-  $email = filter_var($_POST['email'],FILTER_SANITIZE_STRING);
-  $pass =  filter_var($_POST['password'],FILTER_SANITIZE_STRING);
+  $email = filter_var($_POST['email'],FILTER_VALIDATE_EMAIL);
+  $pass =  $_POST['password'];
+
+
 
   function check_password($data){
     if(strlen($data) < 8){//checks string length
-      echo "password should be atleast 8 characters long";
+     FALSE;
     } 
     else if (preg_match('/[A-Za-z]/', $data)==FALSE){
-      echo 'password must have atleast one letter';
+     return FALSE;
+
     }
     else if (preg_match('/[A-Z]/', $data) == FALSE){
-      echo "password should contain an upper case letter";
+     return FALSE;
+
     } 
     else if (preg_match('/[0-9]/', $data) ==FALSE){
-      echo 'password must have atlest one number';
+     return FALSE;
+
     } 
     else{
-      return $data;
+      return TRUE;
     }
   }
 
 
-  $validated_password = check_password($pass);
+  
+if(check_password($pass)){
 
-  $pass_hash = password_hash($validated_password, PASSWORD_DEFAULT); //hash users pass word
+  $pass_hash = password_hash($pass, PASSWORD_DEFAULT); //hash users pass word
+  
 
-  $q = "INSERT INTO users(firstname,lastname,password,email) VALUES('$fname','$lname','$pass_hash','$email');";
+  // $q = "INSERT INTO users(firstname,lastname,password,email) VALUES('$fname','$lname','$pass_hash','$email');";
 
-  if($conn->query($q) == TRUE){
+  $stmt = $conn->prepare("INSERT INTO users(firstname,lastname,password,email) VALUES(:Fname,:Lname,:passwd,:mail_addr)");
+  $stmt->bindParam(':Fname', $fname);
+  $stmt->bindParam(':Lname', $lname);
+  $stmt->bindParam(':passwd', $pass_hash);
+  $stmt->bindParam(':mail_addr', $email);
+
+  if($stmt->execute() == TRUE){
     echo"<script> alert('User Created!'); </script>";
     echo"<script> window.location.href = '../main.php'; </script>";
 
@@ -56,5 +68,10 @@ error_reporting(E_ALL | E_STRICT);
 
 
   }
+}
+else{
+  echo"<script> alert('Your password has an incorrect format!'); </script>";
+  echo"<script> window.location.href = 'newuser.php'; </script>";
+}
 
 ?>

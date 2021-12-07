@@ -1,10 +1,3 @@
-<!-- DEBUGGING MODE -->
-<?php
-ini_set('display_errors', 'On');
-error_reporting(E_ALL | E_STRICT);
-?>
-<!-- END OF DEBUGGING MODE -->
-
 
 <?php
 session_start();
@@ -18,16 +11,16 @@ require_once 'config.php';
 if(ISSET($_POST['password']) && ISSET($_POST['email'])){
 
     //collect info
-    $password = trim(filter_var(htmlspecialchars($_POST['password']), FILTER_SANITIZE_STRING));
-    $email = trim(filter_var(htmlspecialchars($_POST['email']), FILTER_SANITIZE_STRING));
+    $password = $_POST['password'];
+
+    $email = filter_var(htmlspecialchars($_POST['email']), FILTER_VALIDATE_EMAIL);
 
     // get data from database to test it
-    // $db_email="SELECT email From users WHERE users.email='$email';";
     $user_q="SELECT * From users WHERE users.email='$email';";
 
     $user = $conn->query($user_q);
     $u_info = $user-> fetchAll(PDO::FETCH_ASSOC);
-    // var_dump($u_info[0]['id']);
+
 
     // if the user data has been received
     if(count($u_info[0]) > 0 ){
@@ -41,30 +34,29 @@ if(ISSET($_POST['password']) && ISSET($_POST['email'])){
                 $_SESSION['admin'] = $u_info[0]['id'];
             }
     
-            if(isset($_SESSION['current_id']) && $_SESSION['current_id'] > 0){
+            if(isset($_SESSION['current_id'])){
                 ///must be set to the home or main page
+                
                 header("Location:main.php");
                 exit;
             }
         } 
         else {
             echo "<script>alert('You have entered Incorrect Credentials');</script>";
-            header("Location:index.html");            
+            echo "<script> window.location.href = 'index.html'; </script>";
+
         }
 
 
     }else{
-        echo "<script>alert('You have entered Incorrect Credentials');</script>";
-        header("Location:index.html");
-    }
-    
+        echo "<script>alert('You have entered Incorrect Email');</script>";
+        echo "<script> window.location.href = 'index.html'; </script>";
 
-  
+    }   
  
 }
 
 
-// INSERT INTO users(firstname,lastname,password,email) VALUES ('test','test','9u2irhiwhruy43yugyhufnioui 
 
 
 

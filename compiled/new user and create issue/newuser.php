@@ -1,21 +1,11 @@
-<!-- DEBUGGING MODE -->
+
+
+
 <?php
-ini_set('display_errors', 'On');
-error_reporting(E_ALL | E_STRICT);
-?>
-<!-- END OF DEBUGGING MODE -->
-
-
-
-
-
-<?php session_start();?>
-
-<!-- Enable once admin login has been activated -->
-<?php
-  // if(!isset($_SESSION['admin'])){
-    // header("Location: ../main.php");
-  // }
+  session_start();
+  if(!isset($_SESSION['admin'])){
+    header("Location: ../main.php");
+  }
 ?>
 
 <!DOCTYPE html>

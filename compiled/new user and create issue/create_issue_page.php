@@ -1,15 +1,13 @@
-<!-- START OF DEBUGGING -->
+
 
 <?php
-ini_set('display_errors', 'On');
-error_reporting(E_ALL | E_STRICT);
-?>
-<!-- END OF DEBUGGING -->
-
-<?php
+    session_start();   
+if(!isset($_SESSION['current_id'])){
+  header("Location: ../main.php");
+}
 
     $root = $_SERVER['DOCUMENT_ROOT'];
-    include("$root" . "/abbi_code/config.php");
+    include("$root" . "/info2180-finalproject/compiled/config.php");
 
     $q = "SELECT * FROM users";
     $fetched = $conn->query($q);

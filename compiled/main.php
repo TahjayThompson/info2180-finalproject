@@ -1,13 +1,6 @@
-<!-- DEBUGGING MODE -->
-<?php
-ini_set('display_errors', 'On');
-error_reporting(E_ALL | E_STRICT);
-?>
-<!-- END OF DEBUGGING MODE -->
-
-
 
 <?php
+
     session_start();   
     if(!isset($_SESSION['current_id'])){
     header("Location: index.html");
@@ -31,6 +24,7 @@ error_reporting(E_ALL | E_STRICT);
 require_once 'config.php';
 
 $current_user = $_SESSION['current_id'];
+// $current_user = 2;
 $issues_query = $conn->query("SELECT * FROM issues;");
 
 $fetched_issues = $issues_query->fetchAll(PDO::FETCH_ASSOC);

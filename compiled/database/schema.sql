@@ -58,9 +58,7 @@ CREATE TABLE `users` (
 --
 -- Dumping data for table `users`
 --
-
-INSERT INTO `users` (`id`, `firstname`, `lastname`, `password`, `email`, `date_joined`) VALUES
-(1, 'test', 'test', '9u2irhiwhruy43yugyhufnioui ', 'test@test.com', '2021-11-25 06:09:07');
+INSERT INTO `users` (`firstname`, `lastname`, `password`, `email`, `date_joined`) VALUES ('admin', 'admin', '$2y$10$Vd.4dXtfyUt9uJ30UsRJ5u6Ck1.e1EaY9fHRiPTGDHwjR.EXnEYce', 'admin@project2.com', current_timestamp());
 
 --
 -- Indexes for dumped tables
@@ -71,6 +69,9 @@ INSERT INTO `users` (`id`, `firstname`, `lastname`, `password`, `email`, `date_j
 --
 ALTER TABLE `issues`
   ADD PRIMARY KEY (`id`);
+
+  ALTER TABLE `issues`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Indexes for table `users`

@@ -1,23 +1,15 @@
-<!-- DEBUGGING MODE -->
-<?php
-ini_set('display_errors', 'On');
-error_reporting(E_ALL | E_STRICT);
-?>
-<!-- END OF DEBUGGING MODE -->
 
 
 <?php
 session_start();
 
+if(!isset($_SESSION['current_id'])){
+    header("Location: index.html");
+  }
+  
+
 require_once 'config.php';
 
-
-// try {
-//     $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-   
-// } catch (PDOException $pe) {
-//     die("Could not connect to the database $dbname :" . $pe->getMessage());
-// }
 
 $ajax_query = $_GET['issue_data'];
 
